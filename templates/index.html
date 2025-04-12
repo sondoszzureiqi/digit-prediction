@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digit Prediction</title>
+    <style>
+      body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #f0e9d2; /* beige background */
+        color: #4e3b2d; /* dark brown text */
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+      }
+
+      h1 {
+        color: #6f4f28; /* medium brown */
+        margin: 0;
+        padding: 20px;
+        font-size: 2em;
+      }
+
+      form {
+        background-color: #fff;
+        border: 2px solid #6f4f28; /* medium brown border */
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        width: 100%;
+        max-width: 400px;
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      input[type="file"] {
+        margin-bottom: 15px;
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        width: 100%;
+        box-sizing: border-box;
+      }
+
+      input[type="submit"] {
+        background-color: #6f4f28; /* medium brown */
+        border: none;
+        border-radius: 5px;
+        color: white;
+        padding: 10px 20px;
+        cursor: pointer;
+        font-size: 1em;
+        transition: background-color 0.3s ease;
+        width: 100%;
+        box-sizing: border-box;
+      }
+
+      input[type="submit"]:hover {
+        background-color: #8b5e3c; /* lighter brown */
+      }
+
+      .prediction-text {
+        margin-top: 20px;
+        font-size: 1.2em;
+        color: #4e3b2d; /* dark brown */
+        max-width: 600px;
+        width: 100%;
+        box-sizing: border-box;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Digit Prediction</h1>
+    <form action="{{ url_for('predict') }}" method="post" enctype="multipart/form-data">
+      <input type="file" name="file">
+      <input type="submit" value="Upload">
+    </form>
+    <div class="prediction-text">{{ prediction_text }}</div>
+  </body>
+</html>
